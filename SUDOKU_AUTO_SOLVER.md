@@ -231,3 +231,9 @@ public class Main {
 
 ## Использование
 После запуска приложения пользователь может ввести значения в текстовые поля и нажать кнопку "Solve", чтобы увидеть решение судоку прямо в интерфейсе.
+
+![image](https://github.com/user-attachments/assets/b5a311d9-1380-4e8a-abbe-1328c17b28e2)
+
+![image](https://github.com/user-attachments/assets/69d28f84-3161-4a86-bd75-2c0be5719837)
+
+![image](https://github.com/user-attachments/assets/fb3256b4-1ecb-40a6-9550-71a6b939d5a3)
