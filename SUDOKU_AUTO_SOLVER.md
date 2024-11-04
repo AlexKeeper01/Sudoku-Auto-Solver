@@ -19,7 +19,6 @@ public class Sudoku extends JFrame {
     private int[] field_changeable = new int[SIZE];
     private JButton getDataButton;
 
-    // Конструктор класса
     public Sudoku() {
         setTitle("Sudoku Auto Solver"); // Устанавливаем заголовок окна
         setSize(500, 550); // Устанавливаем размеры окна
