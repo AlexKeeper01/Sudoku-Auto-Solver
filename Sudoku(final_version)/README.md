@@ -6,17 +6,16 @@
 ## Код
 
 ```java
-import javax.swing.*; // Импортируем библиотеку для создания графического интерфейса
-import java.awt.*; // Импортируем библиотеку для работы с графикой
-import java.awt.event.ActionEvent; // Импортируем класс для обработки событий действий
-import java.awt.event.ActionListener; // Импортируем интерфейс для слушателей действий
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-// Основной класс приложения, который расширяет JFrame
 public class Sudoku extends JFrame {
-    private JTextField[][] cells = new JTextField[9][9]; // Двумерный массив текстовых полей для ввода значений Судоку
-    private final int SIZE = 81; // Общее количество ячеек Судоку
-    private int[] field = new int[SIZE]; // Массив для хранения значений Судоку
-    private int[] field_changeable = new int[SIZE]; // Массив для отслеживания изменяемых ячеек
+    private JTextField[][] cells = new JTextField[9][9];
+    private final int SIZE = 81;
+    private int[] field = new int[SIZE];
+    private int[] field_changeable = new int[SIZE];
 
     // Конструктор класса
     public Sudoku() {
@@ -63,12 +62,10 @@ public class Sudoku extends JFrame {
         add(getDataButton, BorderLayout.SOUTH); // Добавляем кнопку в нижнюю часть окна
     }
 
-    // Метод для отображения окна
     public void start() {
         setVisible(true); // Делаем окно видимым
     }
 
-    // Метод для обновления значений в текстовых полях после решения
     private void updateFields() {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
@@ -77,7 +74,6 @@ public class Sudoku extends JFrame {
         }
     }
 
-    // Метод для заполнения массива значениями из текстовых полей
     private void fillBoard() {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
@@ -87,7 +83,6 @@ public class Sudoku extends JFrame {
         }
     }
 
-    // Метод для проверки, корректно ли стоит число в указанной строке и столбце согласно правилам Судоку
     private boolean isValid(int row, int col) {
         int id = row * 9 + col; // Вычисляем индекс ячейки в массиве
         int current = field[id]; // Получаем текущее значение ячейки
@@ -117,7 +112,6 @@ public class Sudoku extends JFrame {
         return true; // Возвращаем true, если все проверки пройдены
     }
 
-    // Метод для решения Судоку
     private void solveSudoku() throws WrongSudokuField, WrongSudokuNum {
         // Проверяем, корректно ли заполнение
         for (int i = 0; i < SIZE; i++) {
@@ -186,13 +180,12 @@ public class Sudoku extends JFrame {
 #### Методы класса
 - **Метод `fillBoard()`**: Считывает значения из текстовых полей и заполняет массив `field` соответствующими значениями, заменяя пустые поля на 0.
 - **Метод `updateFields()`**: Обновляет текстовые поля с решением судоку после его нахождения.
-- **Метод `isValid(int row, int col)`**: Проверяет корректность введенных значений судоку, следуя правилам игры.
+- **Метод `isValid(int row, int col)`**: Проверяет корректность расположения цифры, следуя правилам игры.
 - **Метод `solveSudoku()`**: Реализует алгоритм решения судоку, проверяя корректность введенных данных и заполняя массив `field` с решением, если таковое возможно. Вызывает исключения `WrongSudokuNum` и `WrongSudokuField` при неверном заполнении поля.
 
 ### Исключения
 
-- **Исключение `WrongSudokuField`**: Исключение при неверном заполнении полей.
-- **Исключение `WrongSudokuNum`**: Исключение при некорректном значении в одном из полей.
+**Исключение `WrongSudokuField`**: Исключение при неверном заполнении полей.
 
 ```java
 public class WrongSudokuField extends RuntimeException {
@@ -201,6 +194,8 @@ public class WrongSudokuField extends RuntimeException {
     }
 }
 ```
+
+**Исключение `WrongSudokuNum`**: Исключение при некорректном значении в одном из полей.
 
 ```java
 public class WrongSudokuNum extends RuntimeException {
