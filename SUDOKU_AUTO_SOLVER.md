@@ -11,6 +11,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 public class Sudoku extends JFrame {
     private JTextField[][] cells = new JTextField[9][9];
     private final int SIZE = 81;
@@ -33,6 +34,7 @@ public class Sudoku extends JFrame {
                 JPanel panel = new JPanel(); // Создаем новую панель для группы ячеек
                 panel.setLayout(new GridLayout(3, 3)); // Устанавливаем компоновку 3x3 для ячеек
                 panel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2)); // Устанавливаем границу для панели
+                panel.setBackground(Color.YELLOW); // Устанавливаем цвет фона
 
                 // Создаем ячейки Судоку и добавляем их на панель
                 for (int k = 0; k < 3; k++) {
@@ -41,14 +43,19 @@ public class Sudoku extends JFrame {
                         cells[i * 3 + k][j * 3 + l].setHorizontalAlignment(JTextField.CENTER); // Устанавливаем выравнивание текста
                         cells[i * 3 + k][j * 3 + l].setFont(new Font("Arial", Font.BOLD, 18)); // Устанавливаем шрифт
                         panel.add(cells[i * 3 + k][j * 3 + l]); // Добавляем ячейку на панель
+                        cells[i * 3 + k][j * 3 + l].setBackground(Color.LIGHT_GRAY); // Устанавливаем цвет фона
+                        cells[i * 3 + k][j * 3 + l].setForeground(Color.RED);  // Устанавливаем цвет текста
                     }
                 }
                 gridPanel.add(panel); // Добавляем панель с ячейками в основную панель сетки
             }
         }
 
-        // Создаем кнопку для запуска решения Судоку
-        JButton getDataButton = new JButton("Solve");
+        
+        JButton getDataButton = new JButton("Solve"); // Создаем кнопку для запуска решения Судоку
+        getDataButton.setFont(new Font("Arial", Font.BOLD, 20));
+        getDataButton.setBackground(Color.DARK_GRAY); // Устанавливаем цвет фона
+        getDataButton.setForeground(Color.GREEN); // Устанавливаем цвет текста
         getDataButton.addActionListener(new ActionListener() { // Добавляем обработку нажатия кнопки
             @Override
             public void actionPerformed(ActionEvent e) { // Метод, который выполняется при нажатии кнопки
@@ -57,7 +64,6 @@ public class Sudoku extends JFrame {
             }
         });
 
-        // Добавляем панели и кнопку в главное окно
         add(gridPanel, BorderLayout.CENTER); // Добавляем панель сетки в центр окна
         add(getDataButton, BorderLayout.SOUTH); // Добавляем кнопку в нижнюю часть окна
     }
@@ -70,6 +76,9 @@ public class Sudoku extends JFrame {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 cells[i][j].setText(String.valueOf(field[i * 9 + j])); // Устанавливаем текст ячейки
+                if (field_changeable[i * 9 + j] != 1) {
+                    cells[i][j].setForeground(Color.BLUE); // Устанавливаем цвет текста
+                }
             }
         }
     }
@@ -128,7 +137,7 @@ public class Sudoku extends JFrame {
         // Определяем изменяемые ячейки
         for (int k = 0; k < SIZE; k++) {
             if (field[k] != 0) {
-                field_changeable[k] = 1; // Отмечаем, что ячейка изменяемая
+                field_changeable[k] = 1; // Отмечаем, что ячейка неизменяема
             }
         }
         int cursor = 0; // Указатель на текущую ячейку
@@ -161,6 +170,7 @@ public class Sudoku extends JFrame {
         updateFields(); // Обновляем текстовые поля в интерфейсе с решением
     }
 }
+
 ```
 
 ## Объяснение кода
