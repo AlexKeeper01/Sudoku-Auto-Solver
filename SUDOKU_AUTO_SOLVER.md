@@ -17,6 +17,7 @@ public class Sudoku extends JFrame {
     private final int SIZE = 81;
     private int[] field = new int[SIZE];
     private int[] field_changeable = new int[SIZE];
+    private JButton getDataButton;
 
     // Конструктор класса
     public Sudoku() {
@@ -51,8 +52,8 @@ public class Sudoku extends JFrame {
             }
         }
 
-        
-        JButton getDataButton = new JButton("Solve"); // Создаем кнопку для запуска решения Судоку
+
+        getDataButton = new JButton("Solve"); // Создаем кнопку для запуска решения Судоку
         getDataButton.setFont(new Font("Arial", Font.BOLD, 22));
         getDataButton.setBackground(Color.DARK_GRAY); // Устанавливаем цвет фона
         getDataButton.setForeground(Color.GREEN); // Устанавливаем цвет текста
@@ -168,9 +169,10 @@ public class Sudoku extends JFrame {
             }
         }
         updateFields(); // Обновляем текстовые поля в интерфейсе с решением
+        getDataButton.setEnabled(false); // Отключаем кнопку 
+        getDataButton.setText("Solved!"); // Изменяем текст кнопки
     }
 }
-
 ```
 
 ## Объяснение кода
@@ -183,6 +185,7 @@ public class Sudoku extends JFrame {
 - `private final int SIZE`: Константа, равная 81 (9x9) — размер поля cудоку.
 - `private int[] field`: Массив для хранения значений cудоку, введенных пользователем.
 - `private int[] field_changeable`: Массив для отслеживания изменяемых ячеек.
+- `private JButton getDataButton`: Поле для кнопки, чтобы к ней можно было обращаться из других методов.
 
 #### Конструктор
 В конструкторе устанавливается название окна, его размеры и поведение при закрытии. Далее создается панель, на которую добавляются текстовые поля, сгруппированные по 3x3, и кнопка "Solve" для запуска решения.
