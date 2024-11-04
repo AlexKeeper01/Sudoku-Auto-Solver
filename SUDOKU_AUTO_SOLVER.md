@@ -21,7 +21,7 @@ public class Sudoku extends JFrame {
     // Конструктор класса
     public Sudoku() {
         setTitle("Sudoku Auto Solver"); // Устанавливаем заголовок окна
-        setSize(400, 450); // Устанавливаем размеры окна
+        setSize(500, 550); // Устанавливаем размеры окна
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Завершаем программу при закрытии окна
         setLayout(new BorderLayout()); // Устанавливаем менеджер компоновки
 
@@ -41,7 +41,7 @@ public class Sudoku extends JFrame {
                     for (int l = 0; l < 3; l++) {
                         cells[i * 3 + k][j * 3 + l] = new JTextField(1); // Создаем текстовое поле для ячейки
                         cells[i * 3 + k][j * 3 + l].setHorizontalAlignment(JTextField.CENTER); // Устанавливаем выравнивание текста
-                        cells[i * 3 + k][j * 3 + l].setFont(new Font("Arial", Font.BOLD, 18)); // Устанавливаем шрифт
+                        cells[i * 3 + k][j * 3 + l].setFont(new Font("Arial", Font.BOLD, 22)); // Устанавливаем шрифт
                         panel.add(cells[i * 3 + k][j * 3 + l]); // Добавляем ячейку на панель
                         cells[i * 3 + k][j * 3 + l].setBackground(Color.LIGHT_GRAY); // Устанавливаем цвет фона
                         cells[i * 3 + k][j * 3 + l].setForeground(Color.RED);  // Устанавливаем цвет текста
@@ -53,7 +53,7 @@ public class Sudoku extends JFrame {
 
         
         JButton getDataButton = new JButton("Solve"); // Создаем кнопку для запуска решения Судоку
-        getDataButton.setFont(new Font("Arial", Font.BOLD, 20));
+        getDataButton.setFont(new Font("Arial", Font.BOLD, 22));
         getDataButton.setBackground(Color.DARK_GRAY); // Устанавливаем цвет фона
         getDataButton.setForeground(Color.GREEN); // Устанавливаем цвет текста
         getDataButton.addActionListener(new ActionListener() { // Добавляем обработку нажатия кнопки
