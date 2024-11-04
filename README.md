@@ -164,55 +164,13 @@ public class Sudoku extends JFrame{
 - `private int[] field_changeable`: Массив для отслеживания изменяемых ячеек.
 
 #### Конструктор Sudoku
-В конструкторе устанавливается название окна, его размеры и поведение при закрытии. Далее создается панель, на которую добавляются текстовые поля, сгруппированные по 3x3, и кнопка `Solve`** для запуска решения.
+В конструкторе устанавливается название окна, его размеры и поведение при закрытии. Далее создается панель, на которую добавляются текстовые поля, сгруппированные по 3x3, и кнопка `Solve` для запуска решения.
 
-```java
-public Sudoku() {
-        setTitle("Sudoku Auto Solver");
-        setSize(400, 450);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new BorderLayout());
-
-        JPanel gridPanel = new JPanel();
-        gridPanel.setLayout(new GridLayout(3, 3));
-
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                JPanel panel = new JPanel();
-                panel.setLayout(new GridLayout(3, 3));
-                panel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-
-                for (int k = 0; k < 3; k++) {
-                    for (int l = 0; l < 3; l++) {
-                        cells[i * 3 + k][j * 3 + l] = new JTextField(1);
-                        cells[i * 3 + k][j * 3 + l].setHorizontalAlignment(JTextField.CENTER);
-                        cells[i * 3 + k][j * 3 + l].setFont(new Font("Arial", Font.BOLD, 18));
-                        panel.add(cells[i * 3 + k][j * 3 + l]);
-                    }
-                }
-                gridPanel.add(panel);
-            }
-        }
-
-        JButton getDataButton = new JButton("Solve");
-        getDataButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                fillBoard();
-                solveSudoku();
-            }
-        });
-
-        add(gridPanel, BorderLayout.CENTER);
-        add(getDataButton, BorderLayout.SOUTH);
-    }
-```
-
-
+### Методы Sudoku
 - **Метод `fillBoard()`**: Считывает значения из текстовых полей и заполняет массив `field` соответствующими значениями, заменяя пустые поля на 0.
 - **Метод `updateFields()`**: Обновляет текстовые поля с решением судоку после его нахождения.
 - **Метод `isValid(int row, int col)`**: Проверяет корректность введенных значений судоку, следуя правилам игры.
-- **Метод `solveSudoku()`**: Реализует алгоритм решения судоку, проверяя корректность введенных данных и заполняя массив `field` с решением, если таковое возможно.
+- **Метод `solveSudoku()`**: Реализует алгоритм решения судоку, проверяя корректность введенных данных и заполняя массив `field` с решением, если таковое возможно. Вызывает исключения `WrongSudokuNum` и `WrongSudokuField` при неверном заполнении поля.
 
 ### Запуск приложения
 
