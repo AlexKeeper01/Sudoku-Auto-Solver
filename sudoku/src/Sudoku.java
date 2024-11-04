@@ -17,7 +17,7 @@ public class Sudoku extends JFrame {
         setSize(500, 550); // Устанавливаем размеры окна
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Завершаем программу при закрытии окна
         setLayout(new BorderLayout()); // Устанавливаем менеджер компоновки
-        ImageIcon icon = new ImageIcon("resources/icon.png"); // Укажите путь к иконке
+        ImageIcon icon = new ImageIcon("resources/icon.png");
         setIconImage(icon.getImage());
 
         JPanel gridPanel = new JPanel(); // Создаем панель для сетки Судоку
