@@ -13,11 +13,11 @@ import java.awt.event.ActionListener;
 
 
 public class Sudoku extends JFrame {
-    private JTextField[][] cells = new JTextField[9][9];
+    private final JTextField[][] cells = new JTextField[9][9];
     private final int SIZE = 81;
-    private int[] field = new int[SIZE];
-    private int[] field_changeable = new int[SIZE];
-    private JButton getDataButton;
+    private final int[] field = new int[SIZE];
+    private final int[] field_changeable = new int[SIZE];
+    private final JButton getDataButton;
 
     public Sudoku() {
         setTitle("Sudoku Auto Solver"); // Устанавливаем заголовок окна
